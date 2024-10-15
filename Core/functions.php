@@ -1,6 +1,7 @@
 <?php
 
 use Core\Response;
+use Core\Session;
 
 function dd($value)
 {
@@ -44,6 +45,22 @@ function view($path, $attributes = [])
     extract($attributes);
 
     require base_path('views/' . $path);
+}
+
+function logout()
+{
+    Session::destroy();
+}
+
+function login($user)
+{
+    $_SESSION['user'] = [
+        'user_id' => $user['user_id'],
+        'email' => $user['email']
+    ];
+
+    session_regenerate_id(true);
+
 }
 
 function redirect($path)
