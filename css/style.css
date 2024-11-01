@@ -1,0 +1,15 @@
+body{
+    background-color: #F1E6B3;
+}
+
+.centered-image-container{
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+    height: auto;  
+}
+
+.centered-image-container img{
+    max-width:15%;
+    height:auto;
+}
