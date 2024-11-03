@@ -40,6 +40,11 @@ class Router
         $this->add('PUT', $uri, $routes);
     }
 
+    public static function previousUrl()
+    {
+        return $_SERVER['HTTP_REFERER'];
+    }
+
     public function route($uri, $method)
     {
         foreach($this->routes as $route){
