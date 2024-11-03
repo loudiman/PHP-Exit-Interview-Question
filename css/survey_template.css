@@ -44,7 +44,7 @@ h2, p, a {
 .main-content {
     flex-grow: 1;
     padding: 20px;
-    background-color: #F1E6B3;
+    background-color: #FFFFFF;
     transition: all 0.3s ease;
     height: 100vh;
     overflow-y: auto;
