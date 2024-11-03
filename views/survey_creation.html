@@ -48,29 +48,40 @@
               <h2 id="formTitle" onclick="makeEditable('formTitle')">Sample Title</h2>
               <p id="formDescription" onclick="makeEditable('formDescription')">Form Description</p>
           </div>
-          <!-- Questionaire Container -->
+          <!-- Questionnaire Container -->
           <div class="question-container">
-              <div class="question-header">
-                  <input type="text" placeholder="Untitled Question">
-                  <select>
-                      <option value="multiple-choice">Multiple Choice</option>
-                      <option value="essay">Essay</option>
-                      <option value="rating">Rating</option>
-                      <option value="true-false">True or False</option>
-                  </select>
+              <div class="question-content">
+                  <div class="question-header">
+                      <input type="text" placeholder="Untitled Question">
+                      <select>
+                          <option value="multiple-choice">Multiple Choice</option>
+                          <option value="essay">Essay</option>
+                          <option value="rating">Rating</option>
+                          <option value="true-false">True or False</option>
+                      </select>
+                  </div>
+                  <div class="options" id="optionsContainer">
+                      <!-- Options will be added here -->
+                  </div>
+                  <div class="button-container">
+                      <button class="option-button" onclick="addOption()">Add Option</button>
+                      <button class="option-button">Add Other</button>
+                  </div>
               </div>
-              <div class="options">
-                  <input type="text" placeholder="Option 1">
-                  <button class="option-button">Add Option</button>
-                  <button class="option-button">Add other</button>
+              <!-- Side buttons for add question, add photo, add video -->
+              <div class="side-buttons">
+                  <button class="side-button" id="addQuestionBtn" title="Add Question">+</button>
+                  <button class="side-button" id="addPhotoBtn" title="Add Photo">📷</button>
+                  <button class="side-button" id="addVideoBtn" title="Add Video">🎞️</button>
               </div>
-              <button class="review-button">Review Survey</button>
           </div>
       </div>
+      <button class="review-button">Review Survey</button>
+      <button class="back-button" onclick="window.location.href='survey_templates.html';">Back</button>  
     </div>
   </div>
 
   <script src="../js/survey_creation_navbar.js"></script>
-  <script src="../js/survey_creaetion_editable.js"></script>
+  <script src="../js/survey_creation_editable.js"></script>
 </body>
 </html>
