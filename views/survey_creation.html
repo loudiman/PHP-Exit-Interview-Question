@@ -53,7 +53,8 @@
               <div class="question-content">
                   <div class="question-header">
                       <input type="text" placeholder="Untitled Question">
-                      <select>
+                      <!-- Types of questions -->
+                      <select id="questionType" onchange="updateQuestionContent()">
                           <option value="multiple-choice">Multiple Choice</option>
                           <option value="essay">Essay</option>
                           <option value="rating">Rating</option>
@@ -61,12 +62,14 @@
                       </select>
                   </div>
                   <div class="options" id="optionsContainer">
-                      <!-- Options will be added here -->
+                    <!-- Empt options container -->
                   </div>
                   <div class="button-container">
-                      <button class="option-button" onclick="addOption()">Add Option</button>
-                      <button class="option-button">Add Other</button>
-                  </div>
+                    <button class="option-button" onclick="addOption()">Add Option</button>
+                    <span>or</span>
+                    <button class="option-button" onclick="addOtherOption()">Add Other</button>
+                    <button class="option-button answer-key-button" onclick="toggleAnswerKey()" style="display: none;">Answer Key</button>
+                </div>
               </div>
               <!-- Side buttons for add question, add photo, add video -->
               <div class="side-buttons">

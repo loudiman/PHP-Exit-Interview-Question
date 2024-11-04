@@ -32,7 +32,6 @@ h2, p, a {
     font-family: "CustomFont", sans-serif;
 }
 
- /* Main content */
  .main-content {
     flex-grow: 1;
     padding: 20px;
@@ -49,7 +48,6 @@ h2, p, a {
   }
   
 
- /* Survey title container */
 .survey-title {
     padding: 15px;
     border-radius: 10px;
@@ -122,9 +120,9 @@ h2, p, a {
   }
   
   .review-button, .back-button {
-    padding: 10px 15px; /* Ensure both have the same padding */
-    font-size: 16px; /* Make font sizes consistent */
-    height: 50px; /* Set a fixed height for both buttons */
+    padding: 10px 15px; 
+    font-size: 16px;
+    height: 50px; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -146,7 +144,7 @@ h2, p, a {
 .back-button {
     position: fixed;
     bottom: 20px;
-    left: calc(auto + var(--sidebar-width, 20px)); /* Adjusted to remain flexible with the sidebar */
+    left: calc(auto + var(--sidebar-width, 20px)); 
     transition: left 0.3s, background-color 0.3s;
 }
 
@@ -160,6 +158,7 @@ h2, p, a {
     align-items: center;
     margin-bottom: 10px;
     width: 100%;
+
 }
 
 .option-input {
@@ -178,8 +177,8 @@ h2, p, a {
     border-radius: 5px;
     padding: 10px;
     cursor: pointer;
-    width: 12%;
-    height: 5%;
+    width: 30%;
+    height: 10%;
 }
 
 .remove-button:hover {
@@ -192,7 +191,6 @@ h2, p, a {
     margin-top: 10px;
 }
 
-/* Side buttons for question actions */
 .side-buttons {
     display: flex;
     flex-direction: column;
@@ -215,7 +213,57 @@ h2, p, a {
     background-color: #e0e0e0;
 }
 
-.side-button-image{
-    width:100%;
-    height: ;
+.editable-input {
+    width: 100%;
+    font-size: inherit;
+    font-family: inherit;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px 10px;
+    box-sizing: border-box;
+}
+
+.option-input {
+    width: calc(100% - 60px);
+    padding: 8px;
+    margin-bottom: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.option-container {
+    display: flex;
+    align-items: center;
+}
+
+.remove-button {
+    width: 13%;
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff6b6b;
+    color: #fff;
+    cursor: pointer;
+}
+
+.rating-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.true-false-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.disabled-input {
+    width: 86%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
 }
