@@ -245,6 +245,7 @@ h2, p, a {
     padding: 8px 12px;
     cursor: pointer;
     margin-left: 10px;
+    width: 10%
 }
 
 .remove-button:hover {
