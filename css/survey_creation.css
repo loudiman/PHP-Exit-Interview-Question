@@ -224,27 +224,31 @@ h2, p, a {
 }
 
 .option-input {
-    width: calc(100% - 60px);
+    flex-grow: 1;
     padding: 8px;
-    margin-bottom: 8px;
-    border: 1px solid #ccc;
     border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
 .option-container {
     display: flex;
     align-items: center;
+    margin-bottom: 10px;
+    width: 100%;
 }
 
 .remove-button {
-    width: 13%;
-    margin-left: 10px;
-    padding: 5px 10px;
+    background-color: #e74c3c;
+    color: white;
     border: none;
     border-radius: 5px;
-    background-color: #ff6b6b;
-    color: #fff;
+    padding: 8px 12px;
     cursor: pointer;
+    margin-left: 10px;
+}
+
+.remove-button:hover {
+    background-color: #c0392b;
 }
 
 .rating-container {
