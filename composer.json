@@ -9,6 +9,12 @@
     "require": {
         "illuminate/collections": "^11.30"
     },
+    "autoload": {
+        "psr-4": {
+            "Core\\": "Core/",
+            "app\\": "app/"
+        }
+    },
     "config": {
         "allow-plugins": {
             "pestphp/pest-plugin": true
