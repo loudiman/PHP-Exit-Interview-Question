@@ -4,6 +4,7 @@
   "description": "This is a microservice for login",
   "main": "login.js",
   "scripts": {
+    "start": "node login.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
