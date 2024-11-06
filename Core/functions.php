@@ -42,9 +42,9 @@ function base_path($path)
 
 function view($path, $attributes = [])
 {
-    extract($attributes);
+    // extract($attributes);
 
-    require base_path('views/' . $path);
+    require base_path('public/resources/views/' . $path);
 }
 
 function logout()
@@ -55,12 +55,12 @@ function logout()
 function login($user)
 {
     $_SESSION['user'] = [
-        'user_id' => $user['user_id'],
+        'userId' => $user['userId'],
+        'userType' => $user['userType'],
         'email' => $user['email']
     ];
 
     session_regenerate_id(true);
-
 }
 
 function redirect($path)

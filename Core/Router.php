@@ -40,12 +40,17 @@ class Router
         $this->add('PUT', $uri, $routes);
     }
 
+    public static function previousUrl()
+    {
+        return $_SERVER['HTTP_REFERER'];
+    }
+
     public function route($uri, $method)
     {
         foreach($this->routes as $route){
             if($route['uri'] == $uri && $route['method'] == strtoupper($method))
             {
-                return require base_path($route['controller']);
+                return require base_path('app/Http/controllers/' . $route['controller']);
             };
         }
 
