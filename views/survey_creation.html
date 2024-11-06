@@ -10,184 +10,68 @@
   <link rel="stylesheet" href="../css/side_bar.css">
 </head>
 <body>
-  <!-- Navbar -->
-  <div class="navbar">
-    <button onclick="toggleSidebar()">☰</button>
-    <img src="../resource/images/male_user.png" alt="Profile" width="30" height="30">
-  </div>
+<!-- Navbar -->
+<div class="navbar">
+  <button onclick="toggleSidebar()">☰</button>
+  <img src="../resource/images/male_user.png" alt="Profile" width="30" height="30">
+</div>
 
-  <!-- Sidebar and main content container -->
-  <div class="sidebar-container">
-    <!-- Sidebar -->
-    <nav class="sidebar" id="sidebar">
-      <a href="#"><img src="../resource/images/home_icon.png" alt="Home Icon"> Home</a>
-      <a href="#" class="active"><img src="../resource/images/create_icon.png" alt="Create Icon"> Create</a>
-      <a href="#"><img src="../resource/images/view_icon.png" alt="View Icon"> View</a>
-      <a href="#"><img src="../resource/images/respondents_icon.png" alt="Respondents Icon"> Respondents</a>
-      <a href="#"><img src="../resource/images/male_user.png" alt="Profile Icon"> Profile</a>
-    </nav>
+<!-- Sidebar and main content container -->
+<div class="sidebar-container">
+  <!-- Sidebar -->
+  <nav class="sidebar" id="sidebar">
+    <a href="#"><img src="../resource/images/home_icon.png" alt="Home Icon"> Home</a>
+    <a href="#" class="active"><img src="../resource/images/create_icon.png" alt="Create Icon"> Create</a>
+    <a href="#"><img src="../resource/images/view_icon.png" alt="View Icon"> View</a>
+    <a href="#"><img src="../resource/images/respondents_icon.png" alt="Respondents Icon"> Respondents</a>
+    <a href="#"><img src="../resource/images/male_user.png" alt="Profile Icon"> Profile</a>
+  </nav>
 
-    <!-- Main content -->
-    <div class="main-content" id="mainContent">
-      <!-- Survey Container -->
-      <div class="survey-container">
-        <div class="survey-title">
-          <h2 id="formTitle" onclick="makeEditable('formTitle')">Sample Title</h2>
-          <p id="formDescription" onclick="makeEditable('formDescription')">Form Description</p>
-        </div>
+  <!-- Main content -->
+  <div class="main-content" id="mainContent">
+    <!-- Survey Container -->
+    <div class="survey-container">
+      <div class="survey-title">
+        <h2 id="formTitle" onclick="makeEditable('formTitle')">Sample Title</h2>
+        <p id="formDescription" onclick="makeEditable('formDescription')">Form Description</p>
+      </div>
 
-        <!-- Questions Container -->
-        <div id="questionsContainer">
-          <!-- Initial Question Container -->
-          <div class="question-container">
-            <div class="question-content">
-              <div class="question-header">
-                <input type="text" placeholder="Untitled Question">
-                <select onchange="updateQuestionContent(this)">
-                  <option value="multiple-choice">Multiple Choice</option>
-                  <option value="essay">Essay</option>
-                  <option value="rating">Rating</option>
-                  <option value="true-false">True or False</option>
-                </select>
-              </div>
-              <div class="options"></div>
-              <div class="button-container" style="display: none;">
-                <button class="option-button" onclick="addOption(this)">Add Option</button>
-                <span>or</span>
-                <button class="option-button" onclick="addOtherOption(this)">Add Other</button>
-              </div>
+      <!-- Questions Container -->
+      <div id="questionsContainer">
+        <!-- Initial Question Container -->
+        <div class="question-container">
+          <div class="question-content">
+            <div class="question-header">
+              <input type="text" placeholder="Untitled Question">
+              <select onchange="updateQuestionContent(this)">
+                <option value="multiple-choice">Multiple Choice</option>
+                <option value="essay">Essay</option>
+                <option value="rating">Rating</option>
+                <option value="true-false">True or False</option>
+              </select>
             </div>
-            <!-- Side buttons for add question, add photo, add video -->
-            <div class="side-buttons">
-              <button class="side-button" onclick="addQuestion()">+</button>
-              <button class="side-button" title="Add Photo">📷</button>
-              <button class="side-button" title="Add Video">🎞️</button>
+            <div class="options"></div>
+            <div class="button-container" style="display: none;">
+              <button class="option-button" onclick="addOption(this)">Add Option</button>
+              <span>or</span>
+              <button class="option-button" onclick="addOtherOption(this)">Add Other</button>
             </div>
+          </div>
+
+          <!-- Side buttons for add question, add photo, add video -->
+          <div class="side-buttons">
+            <button class="side-button" id="addQuestionButton">+</button>
           </div>
         </div>
       </div>
-      <button class="review-button">Review Survey</button>
-      <button class="back-button" onclick="window.location.href='survey_templates.html';">Back</button>
     </div>
+    <button class="review-button">Review Survey</button>
+    <button class="back-button" onclick="window.location.href='survey_templates.html';">Back</button>
   </div>
+</div>
 
-  <script src="../js/survey_creation_navbar.js"></script>
-  <script src="../js/survey_creation_editable.js"></script>
-  <script>
-    // Function to add a new question container
-    function addQuestion() {
-      const questionsContainer = document.getElementById("questionsContainer");
-
-      // Create a new question container element
-      const newQuestionContainer = document.createElement("div");
-      newQuestionContainer.classList.add("question-container");
-
-      // Set the inner HTML of the new question container
-      newQuestionContainer.innerHTML = `
-        <div class="question-content">
-          <div class="question-header">
-            <input type="text" placeholder="Untitled Question">
-            <select onchange="updateQuestionContent(this)">
-              <option value="multiple-choice">Multiple Choice</option>
-              <option value="essay">Essay</option>
-              <option value="rating">Rating</option>
-              <option value="true-false">True or False</option>
-            </select>
-          </div>
-          <div class="options"></div>
-          <div class="button-container" style="display: none;">
-            <button class="option-button" onclick="addOption(this)">Add Option</button>
-            <span>or</span>
-            <button class="option-button" onclick="addOtherOption(this)">Add Other</button>
-          </div>
-        </div>
-        <div class="side-buttons">
-          <button class="side-button" onclick="addQuestion()">+</button>
-          <button class="side-button" title="Add Photo">📷</button>
-          <button class="side-button" title="Add Video">🎞️</button>
-        </div>
-      `;
-
-      // Append the new question container to the questions container
-      questionsContainer.appendChild(newQuestionContainer);
-
-      // Automatically update the new question container
-      const newSelectElement = newQuestionContainer.querySelector('select');
-      updateQuestionContent(newSelectElement);
-    }
-
-    // Function to update question content based on question type
-    function updateQuestionContent(selectElement) {
-      const questionContent = selectElement.closest(".question-content");
-      const optionsContainer = questionContent.querySelector(".options");
-      const buttonContainer = questionContent.querySelector(".button-container");
-      const questionType = selectElement.value;
-
-      // Clear existing options and reset button visibility
-      optionsContainer.innerHTML = '';
-      buttonContainer.style.display = questionType === 'multiple-choice' ? 'block' : 'none';
-
-      // Populate options based on question type
-      if (questionType === 'multiple-choice') {
-        addOption(buttonContainer.querySelector(".option-button"));
-        addOtherOption(buttonContainer.querySelector(".option-button"));
-      } else if (questionType === 'essay') {
-        optionsContainer.innerHTML = `<textarea placeholder="Your answer here..." rows="4" cols="50" disabled></textarea>`;
-      } else if (questionType === 'rating') {
-        optionsContainer.innerHTML = `
-          <label>Rate from 1 to 5:</label>
-          <div>
-            <input type="radio" name="rating" value="1"> 1
-            <input type="radio" name="rating" value="2"> 2
-            <input type="radio" name="rating" value="3"> 3
-            <input type="radio" name="rating" value="4"> 4
-            <input type="radio" name="rating" value="5"> 5
-          </div>
-        `;
-      } else if (questionType === 'true-false') {
-        optionsContainer.innerHTML = `
-          <div>
-            <input type="radio" name="trueFalse" value="true"> True
-            <input type="radio" name="trueFalse" value="false"> False
-          </div>
-        `;
-      }
-    }
-
-    // Function to add an option dynamically for multiple-choice questions
-    function addOption(button) {
-      const optionsContainer = button.closest(".question-content").querySelector(".options");
-      const newOption = document.createElement("div");
-      newOption.classList.add("option-container");
-      newOption.innerHTML = `
-        <input type="text" placeholder="New Option">
-        <button class="remove-button" onclick="removeOption(this)">Remove</button>
-      `;
-      optionsContainer.appendChild(newOption);
-    }
-
-    // Function to add an "Other" option for multiple-choice questions
-    function addOtherOption(button) {
-      const optionsContainer = button.closest(".question-content").querySelector(".options");
-      const otherOption = document.createElement("div");
-      otherOption.classList.add("option-container");
-      otherOption.innerHTML = `
-        <input type="text" placeholder="Other">
-        <button class="remove-button" onclick="removeOption(this)">Remove</button>
-      `;
-      optionsContainer.appendChild(otherOption);
-    }
-
-    // Function to remove an option
-    function removeOption(button) {
-      button.parentElement.remove();
-    }
-
-    // Ensure the first question is properly initialized when the page loads
-    window.onload = function() {
-      const firstSelectElement = document.querySelector('select');
-      updateQuestionContent(firstSelectElement); // Trigger for the first question container
-    }
-  </script>
+<script src="../js/survey_creation_navbar.js"></script>
+<script src="../js/survey_creation_editable.js"></script>
+<script src="../js/survey_creation.js"></script>
 </body>
 </html>
