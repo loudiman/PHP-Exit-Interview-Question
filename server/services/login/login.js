@@ -8,8 +8,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 
 async function processLogin(username, password) {
-    username = 2233915
-    password = "Test"
+    
     try {
         const [rows] = await db.query("SELECT * FROM user WHERE username = ? AND hashed_password = ?", [username, password]);
         return rows;
@@ -22,11 +21,14 @@ async function processLogin(username, password) {
 app.post('/login',async (req, res) => {
     console.log("Received")
     const { username, password } = req.body
-
+    console.log('Received form data:', { username, password });
     rows = await processLogin(username, password);
 
-    if(rows.length < 0){
-        console.log("Invalid Creds")
+    console.log(rows.length);
+    console.log(rows.length);
+
+    if(rows.length <= 0){
+        console.log("Invalid Creds");
         res.status(401).json({
             error:'Invalid Credentials'
         });
