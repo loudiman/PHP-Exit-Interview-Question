@@ -198,7 +198,6 @@ function removeOption(button) {
     button.parentElement.remove();
     updateOptionLabels(optionsContainer);
 }
-
 function updateOptionLabels(optionsContainer) {
     const optionContainers = optionsContainer.querySelectorAll(".option-container");
 
