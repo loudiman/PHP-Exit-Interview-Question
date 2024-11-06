@@ -110,6 +110,10 @@
 
       // Append the new question container to the questions container
       questionsContainer.appendChild(newQuestionContainer);
+
+      // Automatically update the new question container
+      const newSelectElement = newQuestionContainer.querySelector('select');
+      updateQuestionContent(newSelectElement);
     }
 
     // Function to update question content based on question type
@@ -177,6 +181,12 @@
     // Function to remove an option
     function removeOption(button) {
       button.parentElement.remove();
+    }
+
+    // Ensure the first question is properly initialized when the page loads
+    window.onload = function() {
+      const firstSelectElement = document.querySelector('select');
+      updateQuestionContent(firstSelectElement); // Trigger for the first question container
     }
   </script>
 </body>
