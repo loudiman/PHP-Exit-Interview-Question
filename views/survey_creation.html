@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Create</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/nav_bar.css">
   <link rel="stylesheet" href="../css/survey_creation.css">
   <link rel="stylesheet" href="../css/side_bar.css">
@@ -130,7 +130,7 @@
       // Populate options based on question type
       if (questionType === 'multiple-choice') {
         addOption(buttonContainer.querySelector(".option-button"));
-        addOption(buttonContainer.querySelector(".option-button"));
+        addOtherOption(buttonContainer.querySelector(".option-button"));
       } else if (questionType === 'essay') {
         optionsContainer.innerHTML = `<textarea placeholder="Your answer here..." rows="4" cols="50" disabled></textarea>`;
       } else if (questionType === 'rating') {
