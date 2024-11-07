@@ -1,16 +1,14 @@
-/* Basic Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Navbar Styling */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #2f4f6f;
+    background-color: #223C6B;
     padding: 10px 20px;
     color: #fff;
     width: 100%;
@@ -47,14 +45,12 @@
     font-size: 18px;
 }
 
-/* Main Content Styling */
 .main-content {
-    padding: 70px 20px 20px; /* Added top padding to avoid overlapping with navbar */
-    background-color: #f5f5f5;
-    min-height: 100vh; /* Make content area take full height */
+    padding: 70px 20px 20px;
+    background-color: #FFFFFF;
+    min-height: 100vh;
 }
 
-/* Section Headings */
 h2 {
     color: #000;
     font-family: "Arial", sans-serif;
@@ -62,12 +58,10 @@ h2 {
     margin-top: 20px;
 }
 
-/* Add spacing specifically between sections */
 h2 + .survey-templates {
-    margin-bottom: 40px; /* Spacing between Open and Completed Surveys sections */
+    margin-bottom: 40px;
 }
 
-/* "Hide" link */
 .hide-link {
     color: #888;
     font-size: 14px;
@@ -75,16 +69,21 @@ h2 + .survey-templates {
     margin-left: 10px;
 }
 
-/* Survey Container Styling */
 .survey-templates, .recent-surveys {
     display: flex;
     gap: 20px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     margin-top: 10px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    width: 100%;
+    min-width: 100%;
+    scrollbar-width: thin;
+    min-height: 200px;
 }
 
 .survey-template, .recent-item {
-    background-color: #a0a0a0;
+    background-color: #9EA9BE;
     width: 350px;
     height: 200px;
     border-radius: 10px;
@@ -93,9 +92,36 @@ h2 + .survey-templates {
     justify-content: center;
     align-items: center;
     font-family: "Arial", sans-serif;
+    flex-shrink: 0;
+    visibility: visible;
 }
 
-/* Survey Titles */
+.survey-template.hidden, .recent-item.hidden {
+    visibility: hidden;
+}
+
+.survey-templates::-webkit-scrollbar, .recent-surveys::-webkit-scrollbar {
+    height: 8px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.survey-templates::-webkit-scrollbar-thumb, .recent-surveys::-webkit-scrollbar-thumb {
+    background-color: #2f4f6f;
+    border-radius: 10px;
+}
+
+.survey-templates::-webkit-scrollbar-track, .recent-surveys::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+.survey-templates:hover::-webkit-scrollbar, .recent-surveys:hover::-webkit-scrollbar {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.survey-templates:hover::-webkit-scrollbar-thumb, .recent-surveys:hover::-webkit-scrollbar-thumb {
+    background-color: #2f4f6f;
+}
+
 .survey-template p, .recent-item p {
     font-size: 18px;
     font-weight: bold;
@@ -104,7 +130,6 @@ h2 + .survey-templates {
     text-align: center;
 }
 
-/* Button Styling */
 .survey-template button, .recent-item button {
     background-color: #2f4f6f;
     color: #fff;
@@ -117,7 +142,19 @@ h2 + .survey-templates {
     font-size: 14px;
 }
 
-/* Button Hover Effect */
 .survey-template button:hover, .recent-item button:hover {
     background-color: #1e3b5b;
+}
+
+.search-input {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    width: 200px;
+    margin-right: 15px;
+}
+
+.hidden {
+    display: none
 }
