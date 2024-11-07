@@ -1,4 +1,4 @@
 <?php
 
-$router->get('/login', 'create.php');
-$router->post('/login', 'store.php');
+$router->get('/login', 'session/create.php');
+$router->post('/login', 'session/store.php');
