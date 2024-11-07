@@ -10,13 +10,13 @@ const BASE_PATH = __DIR__ . '/../'; // Points to the root of the project
 
 require BASE_PATH . 'Core/functions.php';
 
-require base_path("vendor/autoload.php");
+require base_path('vendor/autoload.php');
 
 require base_path('bootstrap.php');
 
 session_start();
 
-$router = new \Core\Router;
+$router = new Core\Router;
 
 $routes = require base_path('routes.php');
 
@@ -28,8 +28,12 @@ try {
     $router->route($uri, $method);
 } catch(ValidationException $exception) {
     Session::put('errors', $exception->errors);
-    Session::put('old', $exception->old);       
-    
+    Session::put('old', $exception->old);
+    // $response = array(
+    //     "errors" => 'validation exception'
+    // );
+
+    // echo json_encode($response);
     redirect(Router::previousUrl());
 }
 

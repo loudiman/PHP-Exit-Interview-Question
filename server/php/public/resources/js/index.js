@@ -31,6 +31,12 @@
 //       console.error("Login failed:", error);
 //     }
 //   }
+
+// Load environment variables
+// require('dotenv').config();
+
+// const studentServerUrl = process.env.STUDENT_SERVER_URL;
+// const adminServerUrl = process.env.ADMIN_SERVER_URL;
   
 function handleLogin() {
     let credentials = {
@@ -49,7 +55,11 @@ function handleLogin() {
   .then(response => response.text())
   .then(text => {
     console.log("Raw response:", text); 
-    const data = JSON.parse(text);     
+    const data = JSON.parse(text);
+    if (data.errors) {
+      console.log("Error message:", data.errors);
+    }
+
     if (data.userType == 0) {
       window.location.href = '/student/home';
     } else if (data.userType == 1) {
