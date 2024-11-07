@@ -1,0 +1,123 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2f4f6f;
+    padding: 10px 20px;
+    color: #fff;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 50px;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    width: 34px;
+    height: 34px;
+    margin-left: 15px;
+}
+
+.profile-icon {
+    margin-right: 10px;
+    width: 34px;
+    height: 34px;
+}
+
+.welcome-text {
+    font-family: "Arial", sans-serif;
+    font-size: 18px;
+}
+
+/* Main Content Styling */
+.main-content {
+    padding: 70px 20px 20px; /* Added top padding to avoid overlapping with navbar */
+    background-color: #f5f5f5;
+    min-height: 100vh; /* Make content area take full height */
+}
+
+/* Section Headings */
+h2 {
+    color: #000;
+    font-family: "Arial", sans-serif;
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+/* Add spacing specifically between sections */
+h2 + .survey-templates {
+    margin-bottom: 40px; /* Spacing between Open and Completed Surveys sections */
+}
+
+/* "Hide" link */
+.hide-link {
+    color: #888;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+/* Survey Container Styling */
+.survey-templates, .recent-surveys {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.survey-template, .recent-item {
+    background-color: #a0a0a0;
+    width: 350px;
+    height: 200px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Arial", sans-serif;
+}
+
+/* Survey Titles */
+.survey-template p, .recent-item p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    margin: 0;
+    text-align: center;
+}
+
+/* Button Styling */
+.survey-template button, .recent-item button {
+    background-color: #2f4f6f;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-family: "Arial", sans-serif;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/* Button Hover Effect */
+.survey-template button:hover, .recent-item button:hover {
+    background-color: #1e3b5b;
+}
