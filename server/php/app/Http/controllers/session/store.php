@@ -13,9 +13,9 @@ $inputData = file_get_contents("php://input");
 $data = json_decode($inputData, true);
 
 $form = LoginForm::validate($attributes = [
-    'email' => $data['user'],
-    'password' => $data['password'],
-    '_login' => $data['_login'],
+    'email' => $data['email'],
+    'password' => $data['password']
+    // '_login' => $data['_login'],
 ]);
 
 $signedIn = (new Authenticator)->

@@ -40,9 +40,9 @@
   
 function handleLogin() {
     let credentials = {
-      'user': document.getElementById('email').value,
-      'password': document.getElementById('password').value,
-      '_login': document.getElementById('_login').value
+      'email': document.getElementById('email').value,
+      'password': document.getElementById('password').value
+      // '_login': document.getElementById('_login').value
     };
   
     console.log("Sending credentials:", credentials);
