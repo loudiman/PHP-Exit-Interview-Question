@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log-In</title>
+    <link rel="stylesheet" href="/resources/css/login.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
+</head>
+<body>
+    <main>
+        <div class="centered-image-container">
+            <img src="/resources/images/logo.png" alt="Logo">
+        </div>
+        <div id="centered_form">
+            <form id = "credentials_form">
+                <input type="hidden" id="_login" name="_login" value="index">
+                <p>Email</p>
+                <input type="email" name="email" id="email" placeholder="Enter your email">
+                <p>Password</p> 
+                <input type="password" name="password" id="password" placeholder="Enter your password">
+                <button id="login-btn" onclick="handleLogin()">
+            Login
+        </button>
+            </form>
+        </div>
+    </main>
+    <script src="/resources/js/login.js"></script>
+</body>
+</html>
