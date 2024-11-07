@@ -21,3 +21,9 @@ const items = [
 app.get('/api/items', (req, res) => {
   res.json(items);
 });
+
+// Start the server
+app.listen(port, () => {
+    console.log(`Server is running at http://localhost:${port}`);
+});
+  
