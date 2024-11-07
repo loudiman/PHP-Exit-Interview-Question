@@ -1,0 +1,39 @@
+
+#slu-logo{
+    max-width: 40%;
+    height: auto;
+}
+
+#login-div{
+    max-width: fit-content;
+}
+
+#slu-logo{
+    padding:5px;
+}
+
+body{
+    overflow:hidden;
+}
+
+form{
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+}
+
+.flex-container.center{
+    justify-content: space-between;
+}
+
+form>label{
+    margin-top:20px;
+    margin-bottom:5px;
+}
+
+form>input{
+    border-radius: 10px;
+    border: 1px solid;
+    height: 40px;
+    padding-left: 20px;
+}
