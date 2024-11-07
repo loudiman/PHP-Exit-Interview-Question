@@ -1,3 +1,3 @@
 <?php 
 
-view("index.html");
+view("login.html");
