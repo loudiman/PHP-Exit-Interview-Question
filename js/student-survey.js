@@ -53,75 +53,84 @@ document.getElementById("submitButton").addEventListener("click", () => {
 });
 
 window.onload = function() {
-    // Answer Input Section
-    const answerInputDiv = document.querySelectorAll('.survey-template')[0]; // First survey-template div
-    const answerInputHTML = `
-        <div class="survey-template-header">Sample Question</div>
+    // Fetch survey data from the server
+    fetch('http://localhost:8888/student/surveyid') // Replace with actual URL
+        .then(response => response.json())
+        .then(data => {
+            // Populate survey questions dynamically based on the received data
+            data.questions.forEach((question, index) => {
+                let questionHTML = '';
+                switch (question.question_type) {
+                    case 'multiple_choice':
+                        questionHTML = generateMultipleChoice(question);
+                        break;
+                    case 'rating':
+                        questionHTML = generateRating(question);
+                        break;
+                    case 'text_input':
+                        questionHTML = generateTextInput(question);
+                        break;
+                    default:
+                        break;
+                }
+
+                // Insert the generated question HTML into the corresponding div
+                const surveyDiv = document.querySelectorAll('.survey-template')[index];
+                surveyDiv.innerHTML = questionHTML;
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching survey data:', error);
+        });
+};
+
+// Function to generate HTML for multiple choice questions
+function generateMultipleChoice(question) {
+    const options = question.question_json.options.map(option => {
+        return `<div class="checklist-item">
+                    <img src="../resource/images/Checkbox.png" alt="Checkbox" class="checkbox-icon">
+                    <span>${option}</span>
+                </div>`;
+    }).join('');
+
+    return `
+        <div class="survey-template-header">${question.question_json.question}</div>
+        <div class="survey-template-content">
+            <div class="checklist-container" id="checklistContainer">
+                ${options}
+            </div>
+        </div>
+    `;
+}
+
+// Function to generate HTML for rating questions
+function generateRating(question) {
+    let ratingHTML = '';
+    for (let i = 1; i <= question.question_json.scale; i++) {
+        ratingHTML += `
+            <div class="rating-item" data-rating="${i}">
+                <span>${i}</span>
+                <img src="../resource/images/RatingBefore.png" alt="Star ${i}">
+            </div>
+        `;
+    }
+
+    return `
+        <div class="survey-template-header">${question.question_json.question}</div>
+        <div class="survey-template-content">
+            <div class="rating-container" id="ratingContainer">
+                ${ratingHTML}
+            </div>
+        </div>
+    `;
+}
+
+// Function to generate HTML for text input questions
+function generateTextInput(question) {
+    return `
+        <div class="survey-template-header">${question.question_json.question}</div>
         <div class="survey-template-content">
             <input type="text" class="answer-input" placeholder="Your Answer...">
         </div>
     `;
-    answerInputDiv.innerHTML = answerInputHTML; // Insert the HTML into the first div
-
-    // Rating Section
-    const ratingDiv = document.querySelectorAll('.survey-template')[1]; // Second survey-template div
-    const ratingHTML = `
-        <div class="survey-template-header">Sample Rating</div>
-        <div class="survey-template-content">
-            <div class="rating-container" id="ratingContainer">
-                <div class="rating-item" data-rating="1">
-                    <span>1</span>
-                    <img src="../resource/images/RatingBefore.png" alt="Star 1">
-                </div>
-                <div class="rating-item" data-rating="2">
-                    <span>2</span>
-                    <img src="../resource/images/RatingBefore.png" alt="Star 2">
-                </div>
-                <div class="rating-item" data-rating="3">
-                    <span>3</span>
-                    <img src="../resource/images/RatingBefore.png" alt="Star 3">
-                </div>
-                <div class="rating-item" data-rating="4">
-                    <span>4</span>
-                    <img src="../resource/images/RatingBefore.png" alt="Star 4">
-                </div>
-                <div class="rating-item" data-rating="5">
-                    <span>5</span>
-                    <img src="../resource/images/RatingBefore.png" alt="Star 5">
-                </div>
-            </div>
-        </div>
-    `;
-    ratingDiv.innerHTML = ratingHTML; // Insert the HTML into the second div
-
-    // Checklist Section
-    const checklistDiv = document.querySelectorAll('.survey-template')[2]; // Third survey-template div
-    const checklistHTML = `
-        <div class="survey-template-header">Sample Checklist</div>
-        <div class="survey-template-content">
-            <div class="checklist-container" id="checklistContainer">
-                <div class="checklist-item" data-checklist="1">
-                    <img src="../resource/images/Checkbox.png" alt="Checkbox 1" class="checkbox-icon">
-                    <span>Option 1</span>
-                </div>
-                <div class="checklist-item" data-checklist="2">
-                    <img src="../resource/images/Checkbox.png" alt="Checkbox 2" class="checkbox-icon">
-                    <span>Option 2</span>
-                </div>
-                <div class="checklist-item" data-checklist="3">
-                    <img src="../resource/images/Checkbox.png" alt="Checkbox 3" class="checkbox-icon">
-                    <span>Option 3</span>
-                </div>
-                <div class="checklist-item" data-checklist="4">
-                    <img src="../resource/images/Checkbox.png" alt="Checkbox 4" class="checkbox-icon">
-                    <span>Option 4</span>
-                </div>
-                <div class="checklist-item" data-checklist="5">
-                    <img src="../resource/images/Checkbox.png" alt="Checkbox 5" class="checkbox-icon">
-                    <span>Option 5</span>
-                </div>
-            </div>
-        </div>
-    `;
-    checklistDiv.innerHTML = checklistHTML; // Insert the HTML into the third div
-};
+}
