@@ -3,7 +3,7 @@ const pool = require('../db/mysql')
 class UserDAL {
     static async getAllUsers(){
         try{
-            const [rows] = await pool.query("SELECT * FROM user")
+            const [rows] = await pool.query("SELECT username, last_name, given_name, type FROM user")
 
             return rows;
         }catch(error){
@@ -13,7 +13,7 @@ class UserDAL {
 
     static async getUserByUsername(username){
         try{
-            const [rows] = await pool.query("SELECT * FROM user WHERE ?",[username])
+            const [rows] = await pool.query("SELECT username, last_name, given_name, type FROM user WHERE ?",[username])
             return rows
         }catch(error){
             throw new Error("Error fetching user: "+username+" with error:"+error.message)
