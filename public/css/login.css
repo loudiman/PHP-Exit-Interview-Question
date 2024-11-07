@@ -6,14 +6,48 @@
 
 #login-div{
     max-width: fit-content;
+    padding-left:2%;
+    padding-right:2%;
+    padding-top:10px;
+    padding-bottom:10px;
+    box-shadow: 10px 8px 20px black;
 }
 
 #slu-logo{
     padding:5px;
 }
 
+#icons{
+    
+}
+
+#hero-par{
+    max-width: 40%;
+}
+
+hr{
+    width: 100%;
+}
+
 body{
     overflow:hidden;
+    padding-top:4%
+}
+
+body>.flex-container{
+
+}
+
+form>.row-right-align{
+    display:flex;
+    flex-direction: column;
+    align-items: flex-end;
+    
+}
+
+.row-centered{
+    display:inherit;
+    justify-content: center;
 }
 
 form{
@@ -23,7 +57,7 @@ form{
 }
 
 .flex-container.center{
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 form>label{
@@ -37,3 +71,30 @@ form>input{
     height: 40px;
     padding-left: 20px;
 }
+
+a{
+    color:black;
+    font-size: small;
+}
+
+a:visited{
+    color: black;
+}
+
+footer>div{
+}
+
+a.icon-link{
+    margin-right:10px;
+    max-width: fit-content;
+}
+
+a.icon-link img{
+    width: 40px;
+    height: auto;
+}
+
+.txt-l{
+    font-size:xxx-large
+}
+

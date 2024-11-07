@@ -43,6 +43,10 @@ html *{
     flex-direction: column;
 }
 
+.spacer{
+    flex-grow: 1;
+}
+
 .bg-grey{
     background-color: #A5A9B3;
 }
@@ -67,15 +71,20 @@ html *{
     color:#E1C319
 }
 
-
-.centered-image-container{
-    display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center;     /* Center vertically */
-    height: auto;  
+.color-white{
+    color:white;
 }
 
-.centered-image-container img{
-    max-width:15%;
-    height:auto;
+
+.btn-primary-l{
+    margin-top: 10px;
+    color:white;
+    background-color: #223C6B;
+    padding: 10px;
+    padding-left: 69px;
+    padding-right: 69px;
+    border-radius:10px;
+    font-size: large;
+    font-weight: bold;
+    border: 0px solid;
 }
