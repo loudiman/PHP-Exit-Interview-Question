@@ -1,29 +1,20 @@
-// Note this is just an example of nodejs 
-
 const express = require('express');
 const app = express();
-const port = 8000;
+const dalRoutes = require('./services/dal-service/index');
 
-app.use(express.json()); // Middleware to parse JSON bodies
 
-const items = [
-  { id: 1, name: 'Item One' },
-  { id: 2, name: 'Item Two' }
-];
-
-// GET endpoint to home page
-// app.get('/', (req, res) => {
-//     res.render('/Repositories/index.html');
-//     res.json(items);
-// });
-
-// GET endpoint to retrieve all items
-app.get('/api/items', (req, res) => {
-  res.json(items);
+// Home route
+app.get('/', (req, res) => {
+  res.send('Welcome to the home page!');
 });
 
-// Start the server
-app.listen(port, () => {
-    console.log(`Server is running at http://localhost:${port}`);
+
+app.use('/api', (req, res, next) => {
+  console.log('User route middleware hit');
+  next();  // Ensure next() is called
+}, dalRoutes);  // Attach userRoutes here
+
+const PORT = 2019
+app.listen(PORT, ()=>{
+  console.log('Server is running');
 });
-  
