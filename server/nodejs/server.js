@@ -1,6 +1,9 @@
 const express = require('express');
+const cors = require('cors')
 const app = express();
 const dalRoutes = require('./services/dal-service/index');
+
+app.use(cors())
 
 
 // Home route
