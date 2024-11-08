@@ -10,8 +10,7 @@ WHERE questionaire.survey_id = :id;', [
     'id' => $_GET['id']
 ])->findOrFail();
 
-// redirect();
+
+// dd($survey);
 
 echo json_encode($survey);
-
-// view("student-survey.html");

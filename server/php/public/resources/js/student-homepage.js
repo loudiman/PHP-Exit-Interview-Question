@@ -167,6 +167,7 @@ function createSurveyElements(data, containerId, isOpenSurvey) {
                     // Store the survey data in sessionStorage
                     sessionStorage.setItem('questionnaireData', JSON.stringify(surveyData));
 
+
                     // Redirect to the survey page
                     window.location.href = `http://localhost:8888/student/survey/questionnaire?id=${surveyData.question_id}`; // NOTE: THIS IS TEMPORARY URI IF U FIND THIS NOTIFY ME DAGUL
                 })
