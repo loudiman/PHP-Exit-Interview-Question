@@ -57,7 +57,6 @@ window.onload = function() {
     fetch('http://localhost:8888/student/surveyid') // Replace with actual URL
         .then(response => response.json())
         .then(data => {
-            // Populate survey questions dynamically based on the received data
             data.questions.forEach((question, index) => {
                 let questionHTML = '';
                 switch (question.question_type) {
@@ -70,11 +69,12 @@ window.onload = function() {
                     case 'text_input':
                         questionHTML = generateTextInput(question);
                         break;
+                    case 'true_false':
+                        questionHTML = generateTrueFalse(question);
+                        break;
                     default:
                         break;
                 }
-
-                // Insert the generated question HTML into the corresponding div
                 const surveyDiv = document.querySelectorAll('.survey-template')[index];
                 surveyDiv.innerHTML = questionHTML;
             });
@@ -131,6 +131,25 @@ function generateTextInput(question) {
         <div class="survey-template-header">${question.question_json.question}</div>
         <div class="survey-template-content">
             <input type="text" class="answer-input" placeholder="Your Answer...">
+        </div>
+    `;
+}
+
+// Function to generate HTML for true or false questions
+function generateTrueFalse(question) {
+    return `
+        <div class="survey-template-header">${question.question_json.question}</div>
+        <div class="survey-template-content">
+            <div class="true-false-container">
+                <label class="true-false-item">
+                    <input type="radio" name="trueFalse${question.question_id}" value="True">
+                    <span>True</span>
+                </label>
+                <label class="true-false-item">
+                    <input type="radio" name="trueFalse${question.question_id}" value="False">
+                    <span>False</span>
+                </label>
+            </div>
         </div>
     `;
 }

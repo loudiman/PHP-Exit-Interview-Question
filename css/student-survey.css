@@ -183,6 +183,40 @@ h1 {
     object-fit: cover; /* Ensures image fits without distortion */
 }
 
+/* True or False Container Styling */
+.true-false-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px;
+    background-color: rgba(47, 79, 111, 0.1);
+    border-radius: 10px;
+}
+
+/* Individual True or False Item Styling */
+.true-false-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #2f4f6f;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Arial", sans-serif;
+    font-size: 16px;
+    color: #000;
+    background-color: #fff;
+}
+
+.true-false-item:hover {
+    background-color: rgba(47, 79, 111, 0.2);
+}
+
+/* Radio Button Styling */
+.true-false-item input[type="radio"] {
+    margin-right: 10px;
+    accent-color: #2f4f6f;
+}
+
 /* Button Container Styling */
 .button-container {
     display: flex;
