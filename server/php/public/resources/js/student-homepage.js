@@ -58,11 +58,12 @@ document.addEventListener("DOMContentLoaded", function() {
     async function fetchSurveys() {
         try {
             // Step 2: Make a GET request to the server
-            const response = await fetch('http://localhost:8888/student/surveys');
-            const jsonString = await response.text(); // Get the raw JSON string from the server
+            const response = await fetch('http://localhost:2019/api/surveys/2233915');
+            //const jsonString = await response.text(); // Get the raw JSON string from the server
 
             // Step 3: Parse the JSON string into a JavaScript object
-            const parsedData = JSON.parse(jsonString);
+            const parsedData = await response.json();
+            console.log(parsedData)
 
             // Organize surveys based on completion status
             const openSurveysData = parsedData.surveys.filter(survey => !survey.isComplete);
