@@ -13,19 +13,17 @@ $inputData = file_get_contents("php://input");
 $data = json_decode($inputData, true);
 
 $form = LoginForm::validate($attributes = [
-    'email' => $data['email'],
+    'username' => $data['username'],
     'password' => $data['password']
-    // '_login' => $data['_login'],
 ]);
 
 $signedIn = (new Authenticator)->
-    attempt($attributes['email'], $attributes['password']);
-
+    attempt($attributes['username'], $attributes['password']);
 
 if(!$signedIn)
 {
     $form->error(
-        'email', 'No matching account for the email and password.'
+        'username', 'No matching account for the username and password.'
         )->throw();
 }
 

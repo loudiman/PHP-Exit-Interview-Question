@@ -9,7 +9,7 @@ return [
     "database" => [ 
     "host" => "localhost",
     "port" => 3306,
-    "dbname" => "myweb",
+    "dbname" => "team02",
     "charset" => "utf8mb4"
     ],
 ];
