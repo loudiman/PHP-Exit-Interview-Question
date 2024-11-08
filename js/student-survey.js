@@ -48,8 +48,77 @@ document.getElementById("backButton").addEventListener("click", () => {
 
 // Submit button functionality
 document.getElementById("submitButton").addEventListener("click", () => {
-    alert("Survey Submitted!");
-    window.history.back();
+    const surveyResponses = {
+        survey_id: 1, // Replace with the actual survey_id if needed
+        response_json: []
+    };
+
+    // Collect answers from each question type
+    document.querySelectorAll('.survey-template').forEach((template, index) => {
+        const questionId = index + 1; // Use a unique identifier for each question
+
+        if (template.querySelector('.rating-container')) {
+            // Collect rating answer
+            const selectedRating = template.querySelector('.rating-item img[src*="RatingAfter.png"]');
+            if (selectedRating) {
+                surveyResponses.response_json.push({
+                    question_id: questionId,
+                    rating: parseInt(selectedRating.closest('.rating-item').dataset.rating)
+                });
+            }
+        } else if (template.querySelector('.checklist-container')) {
+            // Collect multiple-choice answers
+            const selectedOptions = [];
+            template.querySelectorAll('.checkbox-icon[src*="Checked_Checkbox.png"]').forEach(selected => {
+                selectedOptions.push(selected.nextElementSibling.innerText);
+            });
+            surveyResponses.response_json.push({
+                question_id: questionId,
+                answer: selectedOptions
+            });
+        } else if (template.querySelector('.answer-input')) {
+            // Collect text input answer
+            const textAnswer = template.querySelector('.answer-input').value;
+            surveyResponses.response_json.push({
+                question_id: questionId,
+                answer: textAnswer
+            });
+        } else if (template.querySelector('.true-false-container')) {
+            // Collect true/false answer
+            const trueFalseAnswer = template.querySelector('input[type="radio"]:checked');
+            if (trueFalseAnswer) {
+                surveyResponses.response_json.push({
+                    question_id: questionId,
+                    answer: trueFalseAnswer.value
+                });
+            }
+        }
+    });
+
+    // Send the survey response JSON to the server
+    fetch('http://localhost:8888/student/surveyid', { // Update with actual server endpoint
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(surveyResponses)
+    })
+        .then(response => response.text())
+        .then(text => {
+            console.log("Raw response:", text);
+            const data = JSON.parse(text);
+
+            if (data.errors) {
+                console.log("Error message:", data.errors);
+            } else {
+                alert("Survey submitted successfully.");
+                window.history.back();
+            }
+        })
+        .catch(error => {
+            console.error("Error during the submission:", error);
+            alert("Error submitting survey. Please try again later.");
+        });
 });
 
 window.onload = function() {
