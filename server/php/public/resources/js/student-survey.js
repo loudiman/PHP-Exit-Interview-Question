@@ -52,37 +52,80 @@ document.getElementById("submitButton").addEventListener("click", () => {
     window.history.back();
 });
 
-window.onload = function() {
-    // Fetch survey data from the server
-    fetch('http://localhost:8888/student/surveyid') // Replace with actual URL
-        .then(response => response.json())
-        .then(data => {
-            // Populate survey questions dynamically based on the received data
-            data.questions.forEach((question, index) => {
-                let questionHTML = '';
-                switch (question.question_type) {
-                    case 'multiple_choice':
-                        questionHTML = generateMultipleChoice(question);
-                        break;
-                    case 'rating':
-                        questionHTML = generateRating(question);
-                        break;
-                    case 'text_input':
-                        questionHTML = generateTextInput(question);
-                        break;
-                    default:
-                        break;
-                }
+// window.onload = function() {
+//     // Fetch survey data from the server
+//     fetch('http://localhost:8888/student/surveyid') // Replace with actual URL
+//         .then(response => response.json())
+//         .then(data => {
+//             // Populate survey questions dynamically based on the received data
+//             data.questions.forEach((question, index) => {
+//                 let questionHTML = '';
+//                 switch (question.question_type) {
+//                     case 'multiple_choice':
+//                         questionHTML = generateMultipleChoice(question);
+//                         break;
+//                     case 'rating':
+//                         questionHTML = generateRating(question);
+//                         break;
+//                     case 'text_input':
+//                         questionHTML = generateTextInput(question);
+//                         break;
+//                     default:
+//                         break;
+//                 }
 
-                // Insert the generated question HTML into the corresponding div
-                const surveyDiv = document.querySelectorAll('.survey-template')[index];
+//                 // Insert the generated question HTML into the corresponding div
+//                 const surveyDiv = document.querySelectorAll('.survey-template')[index];
+//                 surveyDiv.innerHTML = questionHTML;
+//             });
+//         })
+//         .catch(error => {
+//             console.error('Error fetching survey data:', error);
+//         });
+// };
+
+window.onload = function() {
+    // Retrieve survey data from sessionStorage
+    const storedSurveyData = sessionStorage.getItem('questionnaireData');
+
+    if (storedSurveyData) {
+        console.log("Using survey data from sessionStorage");
+
+        // Parse the stored data
+        const data = JSON.parse(storedSurveyData);
+
+        // Populate survey questions dynamically based on the stored data
+        data.questions.forEach((question, index) => {
+            let questionHTML = '';
+
+            switch (question.question_type) {
+                case 'multiple_choice':
+                    questionHTML = generateMultipleChoice(question);
+                    break;
+                case 'rating':
+                    questionHTML = generateRating(question);
+                    break;
+                case 'text_input':
+                    questionHTML = generateTextInput(question);
+                    break;
+                default:
+                    console.warn("Unknown question type:", question.question_type);
+                    break;
+            }
+
+            // Insert the generated question HTML into the corresponding div
+            const surveyDiv = document.querySelectorAll('.survey-template')[index];
+            if (surveyDiv) {
                 surveyDiv.innerHTML = questionHTML;
-            });
-        })
-        .catch(error => {
-            console.error('Error fetching survey data:', error);
+            } else {
+                console.error(`Survey div not found for question index: ${index}`);
+            }
         });
+    } else {
+        console.error("No survey data found in sessionStorage");
+    }
 };
+
 
 // Function to generate HTML for multiple choice questions
 function generateMultipleChoice(question) {
