@@ -57,14 +57,18 @@ document.addEventListener("DOMContentLoaded", function() {
     // Fetch surveys from the PHP server
     async function fetchSurveys() {
         try {
+            // Step 2: Make a GET request to the server
             const response = await fetch('http://localhost:8888/student/home');
-            const jsonData = await response.json();
+            const jsonString = await response.text(); // Get the raw JSON string from the server
+
+            // Step 3: Parse the JSON string into a JavaScript object
+            const parsedData = JSON.parse(jsonString);
 
             // Organize surveys based on completion status
-            const openSurveysData = jsonData.surveys.filter(survey => !survey.IsComplete);
-            const completedSurveysData = jsonData.surveys.filter(survey => survey.IsComplete);
+            const openSurveysData = parsedData.surveys.filter(survey => !survey.isComplete);
+            const completedSurveysData = parsedData.surveys.filter(survey => survey.isComplete);
 
-            // Add surveys to the page
+            // Step 4: Add surveys to the page using createSurveyElements
             createSurveyElements(openSurveysData, 'open-surveys', true); // Open Surveys
             createSurveyElements(completedSurveysData, 'recent-surveys', false); // Completed Surveys
 
