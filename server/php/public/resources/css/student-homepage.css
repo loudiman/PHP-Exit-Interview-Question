@@ -119,7 +119,7 @@ h2 + .survey-templates {
 }
 
 .survey-templates:hover::-webkit-scrollbar-thumb, .recent-surveys:hover::-webkit-scrollbar-thumb {
-    background-color: #2f4f6f;
+    background-color: #2f4f6f;.
 }
 
 .survey-template p, .recent-item p {

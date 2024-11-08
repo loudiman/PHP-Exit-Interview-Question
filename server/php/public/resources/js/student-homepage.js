@@ -90,9 +90,10 @@ document.addEventListener("DOMContentLoaded", function() {
             surveyTitle.textContent = survey.survey_title; // Use the survey title from JSON
             surveyElement.appendChild(surveyTitle);
 
-            const button = document.createElement('button');
-            button.textContent = isOpenSurvey ? 'Take The Survey' : 'View Details';
-            surveyElement.appendChild(button);
+            const surveyLink = document.createElement('a');
+            surveyLink.href = `/student/surveys?survey_id=${survey.survey_id}`;
+            surveyLink.textContent = isOpenSurvey ? `Take the Survey` : `View Details`;
+            surveyElement.appendChild(surveyTitle);
 
             container.appendChild(surveyElement);
         });
