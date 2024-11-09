@@ -8,9 +8,12 @@ FROM question AS q LEFT JOIN questionaire
 ON q.question_id = questionaire.question_id
 WHERE questionaire.survey_id = :id;', [
     'id' => $_GET['id']
-])->findOrFail();
+])->get();
 
+$result = [
+    "questions" => $survey
+];
 
 // dd($survey);
 
-echo json_encode($survey);
+echo json_encode($result);
